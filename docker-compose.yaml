@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data
+
+  dagster:
+    build:
+      context: .
+      dockerfile: Dockerfile.dagster
+    environment:
+      - DAGSTER_HOME=/dagster/dagster_home
+      - MONGODB_HOST=mongodb
+      - MONGODB_USER=user
+      - MONGODB_PASSWORD=pass
+      - MONGODB_PORT=27017
+    volumes:
+      - dagster_data:/dagster
+    ports:
+      - "3000:3000"
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+
+volumes:
+  mongodb:
+    driver: local
+  dagster_data:
+    driver: local
