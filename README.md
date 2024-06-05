@@ -17,11 +17,20 @@ Task for the course Data Engineering to scrape data from hackernews and set up a
 
 ## Setup
 
-Run the docker container to build and start the project
+### Clone the repository
 
-
-```
+```bash
 git clone https://github.com/r0810053/dataEngGroup4Project2.git
+```
+
+### Navigate to the project directory
+
+```bash
 cd .\dataEngGroup4Project2\
+```
+
+### Run the docker container to build and start the project
+
+```bash
 docker compose up --build
 ```
