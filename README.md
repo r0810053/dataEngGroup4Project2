@@ -22,5 +22,6 @@ Run the docker container to build and start the project
 
 ```
 git clone https://github.com/r0810053/dataEngGroup4Project2.git
+cd .\dataEngGroup4Project2\
 docker compose up --build
 ```
